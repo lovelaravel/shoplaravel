@@ -1,0 +1,43 @@
+{
+    "name": "lovelaravel/shoplaravel",
+    "description": "A Laravel package to build a web shop for application of Laravel.",
+    "keywords": [
+        "laravel",
+        "store",
+        "shop",
+        "cart",
+        "orders",
+        "b2b",
+        "transactions",
+        "e-commerce",
+        "shopping cart",
+        "ecommerce",
+        "shopping"
+    ],
+    "homepage": "https://github.com/lovelaravel/shoplaravel",
+    "support": {
+        "issues": "https://github.com/lovelaravel/shoplaravel/issues",
+        "source": "https://github.com/lovelaravel/shoplaravel"
+    },
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Karol Golec",
+            "email": "lovelaravel@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.5.9",
+        "illuminate/console": "5.2.*",
+        "illuminate/support": "5.2.*"
+    },
+    "requireDev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Lovelaravel\\Shoplaravel\\": "src/"
+        }
+    }
+}
