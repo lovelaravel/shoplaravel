@@ -19,4 +19,11 @@ composer require lovelaravel/shoplaravel
     */
     Lovelaravel\Shoplaravel\ShopLaravelServiceProvider::class,
 ],
+
+'aliases' => [
+    /**
+    * Other aliases
+    */
+    'Shop' => Lovelaravel\Shoplaravel\Shops\Facades\Shop::class,
+],
 ```

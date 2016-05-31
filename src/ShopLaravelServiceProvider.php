@@ -3,6 +3,7 @@
 namespace Lovelaravel\ShopLaravel;
 
 use Illuminate\Contracts\Foundation\Application;
+use Lovelaravel\Shoplaravel\Shops\Classes\Shop;
 
 class ShopLaravelServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -40,19 +41,22 @@ class ShopLaravelServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         parent::boot();
 
-        $config = $this->app['config'];
-
         // Add the install wizard routes front if asked to
-        $loadDefaultRoutesFront = $config->get('shoplaravel.routing.load_default_front');
-        if ($loadDefaultRoutesFront && ! $this->app->routesAreCached()) {
-            require($this->packageDir . '/src/Routes/front.php');
+        if ( ! $this->app->routesAreCached()) {
+            require($this->packageDir . '/src/Routes/front_api.php');
         }
 
         // Add the install wizard routes back if asked to
-        $loadDefaultRoutesBack = $config->get('shoplaravel.routing.load_default_back');
-        if ($loadDefaultRoutesBack && ! $this->app->routesAreCached()) {
+        if ( ! $this->app->routesAreCached()) {
             require($this->packageDir . '/src/Routes/back.php');
         }
+        
+        // Facades
+        $this->app->singleton('Shop', function ($app){
+            return new Shop($app); 
+        });
+        
+        $this->app->alias('Shop', Shop::class);
 
         // We have some views and translations for the wizard
         $this->loadViewsFrom(
